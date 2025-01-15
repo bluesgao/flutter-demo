@@ -1,21 +1,64 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_swiper_view/flutter_swiper_view.dart';
 
-/// 应用主界面
-class HomePage extends StatefulWidget {
-  @override
-  _HomePageState createState() => _HomePageState();
-}
+/// Flutter code sample for [Scaffold.drawer].
 
-class _HomePageState extends State<HomePage> {
+
+class HomePage extends StatelessWidget {
+  const HomePage({super.key});
+
   @override
   Widget build(BuildContext context) {
-    /// 界面框架
-    return const Scaffold(
-      /// 居中组件
+    return const MaterialApp(
+      home: DrawerHomePage(),
+    );
+  }
+}
+
+class DrawerHomePage extends StatefulWidget {
+  const DrawerHomePage({super.key});
+
+  @override
+  State<DrawerHomePage> createState() => _DrawerHomePageState();
+}
+
+class _DrawerHomePageState extends State<DrawerHomePage> {
+  final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
+
+  void _openDrawer() {
+    _scaffoldKey.currentState!.openDrawer();
+  }
+
+  void _closeDrawer() {
+    Navigator.of(context).pop();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      key: _scaffoldKey,
+      appBar: AppBar(title: const Text('GIT CLIENT')),
       body: Center(
-        child: Text("主页面"),
+        child: ElevatedButton(
+          onPressed: _openDrawer,
+          child: const Text('Open Drawer'),
+        ),
       ),
+      drawer: Drawer(
+        child: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              const Text('This is the Drawer'),
+              ElevatedButton(
+                onPressed: _closeDrawer,
+                child: const Text('Close Drawer'),
+              ),
+            ],
+          ),
+        ),
+      ),
+      // Disable opening the drawer with a swipe gesture.
+      drawerEnableOpenDragGesture: false,
     );
   }
 }
