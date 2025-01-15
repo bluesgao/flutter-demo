@@ -15,5 +15,14 @@ For help getting started with Flutter development, view the
 [online documentation](https://docs.flutter.dev/), which offers tutorials,
 samples, guidance on mobile development, and a full API reference.
 
+参考
 https://book.flutterchina.club/chapter15/models.html#_15-3-3-%E9%A1%B9%E7%9B%AE%E4%BF%A1%E6%81%AF
 https://github.com/wendux/flutter_in_action_2/blob/main/gitme/lib/main.dart
+
+命令
+flutter clean
+flutter packages pub run build_runner build
+flutter pub add dev:build_runner
+flutter pub add json_annotation
+
+
